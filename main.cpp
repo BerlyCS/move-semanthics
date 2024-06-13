@@ -27,10 +27,12 @@ int main() {
     vect<point> b(3, point(2,2));
     b.print();
 
+    //Move por asignacion
     a = std::move(b);
     a.print();
     b.print();
 
+    //Move por constructor
     vect<point> c(std::move(b));
     c.print();
 
