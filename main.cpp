@@ -2,7 +2,6 @@
 #include <ostream>
 #include <utility>
 #include "vector.hpp"
-#include "array.hpp"
 
 using namespace std;
 
