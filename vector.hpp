@@ -36,7 +36,7 @@ template<class T> class vect {
         bool operator>=(vect<T>&);
         bool operator<=(vect<T>&);
         void operator=(vect<T>&);
-        void operator=(vect<T>&&);
+        vect<T>& operator=(vect<T>&&) noexcept;
 };
 
 template <class T>
@@ -98,12 +98,13 @@ void vect<T>::operator=(vect<T>& tmp) {
 }
 
 template <class T>
-void vect<T>::operator=(vect<T>&& tmp)
-{
-    delete this->data;
+vect<T>& vect<T>::operator=(vect<T>&& tmp)
+ noexcept {
+    delete[] this->data;
     data = tmp.data, size = tmp.size;  
     tmp.size = 0;
     tmp.data = nullptr;
+    return *this;
 }
 
 template<class T>
